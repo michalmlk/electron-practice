@@ -17,6 +17,11 @@ declare global {
             getDesktopParameters: () => Promise<DesktopSpecData>,
         }
     }
+
+    type ElectronEventMap = {
+        statistics: OSData,
+        getDesktopParameters: DesktopSpecData,
+    }
 }
 
 export {}

@@ -1,7 +1,8 @@
-import {app, BrowserWindow, ipcMain} from 'electron'
+import {app, BrowserWindow} from 'electron'
 import {fileURLToPath} from 'node:url'
 import path from 'node:path'
-import {DesktopSpecData, getCurrentResourcesData, getDesktopSpecData} from "./resourceManager.ts";
+import {getCurrentResourcesData, getDesktopSpecData} from "./resourceManager.ts";
+import {ipcMainHandle} from "./utils.ts";
 
 // const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -70,7 +71,5 @@ app.whenReady().then(() => {
     if (win) {
         getCurrentResourcesData(win);
     }
-    ipcMain.handle("getDesktopParameters", (): Promise<DesktopSpecData> => {
-        return getDesktopSpecData();
-    });
+    ipcMainHandle("getDesktopParameters", getDesktopSpecData)
 })

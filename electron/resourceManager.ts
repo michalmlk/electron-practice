@@ -1,6 +1,7 @@
 import {BrowserWindow} from "electron";
 import {cpuCount, cpuUsage, freememPercentage, totalmem} from 'os-utils';
 import os from 'os'
+import {ipcWebContentsSend} from "./utils.ts";
 
 const POOL_INTERVAL = 1000;
 
@@ -20,14 +21,14 @@ export const getCurrentResourcesData = (mainWindow: BrowserWindow): void => {
         const cpuUsage = await getCpuUsage();
         const freeOperatingMemory = Math.round((1 - freememPercentage()) * 1000) / 10;
 
-        mainWindow?.webContents.send("statistics", <OSData>{
+        ipcWebContentsSend("statistics", mainWindow.webContents, {
             cpuUsage,
             freeOperatingMemory
         })
     }, POOL_INTERVAL);
 }
 
-export const getDesktopSpecData = async (): Promise<DesktopSpecData> => ({
+export const getDesktopSpecData = (): DesktopSpecData => ({
     cpuModel: os.cpus()[0].model,
     numberOfCores: cpuCount(),
     totalMemory: Math.floor(totalmem() / 1024),
