@@ -24,8 +24,6 @@ export const ipcWebContentsSend = <Key extends keyof ElectronEventMap>(
 }
 
 export const validateFrame = (frame: WebFrameMain) => {
-    console.log(isDev())
-    console.log(new URL(frame.url).host)
     if (isDev() && new URL(frame.url).host === 'localhost:5173') {
         return;
     }

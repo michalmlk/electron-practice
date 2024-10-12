@@ -8,7 +8,7 @@ function App() {
 
     useEffect(() => {
         window.electron.getDesktopParameters().then(params => setDesktopData(params));
-        window.electron.statisticListener(data => setCurrentUsage(data));
+        return window.electron.statisticListener(data => setCurrentUsage(data));
     }, []);
 
 

@@ -13,7 +13,7 @@ declare global {
     interface Window {
         ipcRenderer: import('electron').IpcRenderer
         electron: {
-            statisticListener: (callback: (data: OSData) => void) => void,
+            statisticListener: (callback: (data: OSData) => void) => UnsubscribeFn,
             getDesktopParameters: () => Promise<DesktopSpecData>,
         }
     }
@@ -22,6 +22,8 @@ declare global {
         statistics: OSData,
         getDesktopParameters: DesktopSpecData,
     }
+
+    type UnsubscribeFn = () => void;
 }
 
 export {}

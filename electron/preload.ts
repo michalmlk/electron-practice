@@ -21,15 +21,17 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 })
 
 const ipcRenderOn = <Key extends keyof ElectronEventMap>(key: Key, callback: (payload: ElectronEventMap[Key]) => void) => {
-    ipcRenderer.on(key, (_, payload) => callback(payload))
+
+    const _callback = (_: Electron.IpcRendererEvent, payload: ElectronEventMap[Key]) => callback(payload);
+    ipcRenderer.on(key, _callback);
+    return () => ipcRenderer.off(key, _callback)
 }
 
 const ipcRenderInvoke = <Key extends keyof ElectronEventMap>(key: Key): Promise<ElectronEventMap[Key]> =>
     ipcRenderer.invoke(key);
 
 contextBridge.exposeInMainWorld('electron', {
-    statisticListener: (callback) => {
-        ipcRenderOn('statistics', (data: ElectronEventMap['statistics']) => callback(data))
-    },
+    statisticListener: (callback) =>
+        ipcRenderOn('statistics', (data: ElectronEventMap['statistics']) => callback(data)),
     getDesktopParameters: () => ipcRenderInvoke("getDesktopParameters"),
 } satisfies Window['electron'])
