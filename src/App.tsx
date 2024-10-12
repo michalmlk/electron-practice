@@ -1,20 +1,9 @@
 import {useEffect, useState} from 'react'
 import './App.css'
 
-type DesktopSpec = {
-    cpuModel: string;
-    numberOfCores: number;
-    totalMemory: number;
-}
-
-type OSData = {
-    cpuUsage: number;
-    freeOperatingMemory: number;
-}
-
 function App() {
 
-    const [desktopData, setDesktopData] = useState<DesktopSpec>();
+    const [desktopData, setDesktopData] = useState<DesktopSpecData>();
     const [currentUsage, setCurrentUsage] = useState<OSData>();
 
     useEffect(() => {

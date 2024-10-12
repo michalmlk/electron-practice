@@ -1,5 +1,4 @@
 import {ipcRenderer, contextBridge} from 'electron'
-import {DesktopSpecData, OSData} from "./resourceManager.ts";
 
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
@@ -22,8 +21,8 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 })
 
 contextBridge.exposeInMainWorld('electron', {
-    statisticListener: (callback: (data: OSData) => OSData) => {
+    statisticListener: (callback) => {
         ipcRenderer.on('statistics', (_, data) => callback(data))
     },
-    getDesktopParameters: (): Promise<DesktopSpecData> => ipcRenderer.invoke("getDesktopParameters"),
-})
+    getDesktopParameters: () => ipcRenderer.invoke("getDesktopParameters"),
+} satisfies Window['electron'])

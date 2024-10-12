@@ -4,17 +4,6 @@ import os from 'os'
 
 const POOL_INTERVAL = 1000;
 
-export type OSData = {
-    cpuUsage: number;
-    freeOperatingMemory: number;
-}
-
-export type DesktopSpecData = {
-    cpuModel: string;
-    numberOfCores: number;
-    totalMemory: number;
-}
-
 export const getCpuUsage = () => {
     return new Promise<number>((resolve, reject) => {
         try {
