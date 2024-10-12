@@ -11,19 +11,19 @@ declare global {
     }
 
     interface Window {
-        ipcRenderer: import('electron').IpcRenderer
+        ipcRenderer: import('electron').IpcRenderer;
         electron: {
-            statisticListener: (callback: (data: OSData) => void) => UnsubscribeFn,
-            getDesktopParameters: () => Promise<DesktopSpecData>,
-        }
+            statisticListener: (callback: (data: OSData) => void) => UnsubscribeFn;
+            getDesktopParameters: () => Promise<DesktopSpecData>;
+        };
     }
 
     type ElectronEventMap = {
-        statistics: OSData,
-        getDesktopParameters: DesktopSpecData,
-    }
+        statistics: OSData;
+        getDesktopParameters: DesktopSpecData;
+    };
 
     type UnsubscribeFn = () => void;
 }
 
-export {}
+export {};
