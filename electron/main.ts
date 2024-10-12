@@ -2,7 +2,8 @@ import {app, BrowserWindow} from 'electron'
 import {fileURLToPath} from 'node:url'
 import path from 'node:path'
 import {getCurrentResourcesData, getDesktopSpecData} from "./resourceManager.ts";
-import {ipcMainHandle} from "./utils.ts";
+import {ipcMainHandle, isDev} from "./utils.ts";
+import {getUIPath} from "./pathResolver.ts";
 
 // const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -44,7 +45,7 @@ function createWindow() {
         win.loadURL(VITE_DEV_SERVER_URL)
     } else {
         // win.loadFile('dist/index.html')
-        win.loadFile(path.join(RENDERER_DIST, 'index.html'))
+        win.loadFile(path.join(getUIPath()));
     }
 }
 
@@ -70,6 +71,7 @@ app.whenReady().then(() => {
     createWindow();
     if (win) {
         getCurrentResourcesData(win);
+        isDev();
     }
     ipcMainHandle("getDesktopParameters", getDesktopSpecData)
 })
