@@ -3,9 +3,10 @@ import BaseChart from './BaseChart.tsx';
 
 type ChartProps = {
     data: number[];
+    dataLabel: string;
 };
 
-export const Chart = ({ data }: ChartProps) => {
+export const Chart = ({ data, dataLabel }: ChartProps) => {
     const chartData = useMemo(
         () =>
             data.map((data) => ({
@@ -13,5 +14,5 @@ export const Chart = ({ data }: ChartProps) => {
             })),
         [data]
     );
-    return <BaseChart data={chartData} />;
+    return <BaseChart data={chartData} dataLabel={dataLabel} />;
 };

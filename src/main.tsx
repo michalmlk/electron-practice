@@ -2,10 +2,42 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Statistics } from './routes/statistics.tsx';
+import { Settings } from './routes/settings/settings.tsx';
+import { AdjustTheme } from './routes/settings/settings-tabs/AdjustTheme';
+import { AdjustHomepage } from './routes/settings/settings-tabs/AdjustHomepage';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+        children: [
+            {
+                path: '/statistics',
+                element: <Statistics />,
+            },
+            {
+                path: '/settings',
+                element: <Settings />,
+                children: [
+                    {
+                        path: '/settings/theme',
+                        element: <AdjustTheme />,
+                    },
+                    {
+                        path: '/settings/homepage',
+                        element: <AdjustHomepage />,
+                    },
+                ],
+            },
+        ],
+    },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <App />
+        <RouterProvider router={router} />
     </React.StrictMode>
 );
 

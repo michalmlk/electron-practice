@@ -1,28 +1,24 @@
-import { useEffect, useMemo, useState } from 'react';
-import './App.css';
-import { useStats } from './types/useStats.ts';
-import { Chart } from './components/Chart.tsx';
+import { NavigationComponent } from './components/BottomNavigation.tsx';
+import { Outlet } from 'react-router-dom';
+import './index.css';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 function App() {
-    const [desktopData, setDesktopData] = useState<DesktopSpecData>();
-    const currentUsage = useStats();
-    const cpuUsage = useMemo(() => currentUsage.map((usage) => usage.cpuUsage), [currentUsage]);
-    const freeOperatingMemory = useMemo(() => currentUsage.map((usage) => usage.freeOperatingMemory), [currentUsage]);
-
-    useEffect(() => {
-        window.electron.getDesktopParameters().then((params) => setDesktopData(params));
-    }, [currentUsage]);
-
     return (
-        <>
-            <div style={{ width: '540px', height: '220px' }}>
-                <Chart data={cpuUsage} />
+        <ThemeProvider theme={theme}>
+            <div className="app-container">
+                <div className="page-content">
+                    <Outlet />
+                </div>
+                <NavigationComponent />
             </div>
-            <Chart data={freeOperatingMemory} />
-            <p>
-                {desktopData?.cpuModel} {desktopData?.totalMemory} MB {desktopData?.numberOfCores}
-            </p>
-        </>
+        </ThemeProvider>
     );
 }
 

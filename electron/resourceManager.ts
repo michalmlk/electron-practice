@@ -31,5 +31,5 @@ export const getCurrentResourcesData = (mainWindow: BrowserWindow): void => {
 export const getDesktopSpecData = (): DesktopSpecData => ({
     cpuModel: os.cpus()[0].model,
     numberOfCores: cpuCount(),
-    totalMemory: Math.floor(totalmem() / 1024),
+    totalMemory: totalmem(),
 });
