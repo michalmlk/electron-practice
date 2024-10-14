@@ -1,24 +1,25 @@
-import {useEffect, useState} from 'react'
-import './App.css'
+import { NavigationComponent } from './components/BottomNavigation.tsx';
+import { Outlet } from 'react-router-dom';
+import './index.css';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 function App() {
-
-    const [desktopData, setDesktopData] = useState<DesktopSpecData>();
-    const [currentUsage, setCurrentUsage] = useState<OSData>();
-
-    useEffect(() => {
-        window.electron.getDesktopParameters().then(params => setDesktopData(params));
-        window.electron.statisticListener(data => setCurrentUsage(data));
-    }, []);
-
-
     return (
-        <>
-            <p>CPU usage: {currentUsage?.cpuUsage}</p>
-            <p>Free memory: {currentUsage?.freeOperatingMemory}%</p>
-            <p>{desktopData?.cpuModel} {desktopData?.totalMemory} MB {desktopData?.numberOfCores}</p>
-        </>
-    )
+        <ThemeProvider theme={theme}>
+            <div className="app-container">
+                <div className="page-content">
+                    <Outlet />
+                </div>
+                <NavigationComponent />
+            </div>
+        </ThemeProvider>
+    );
 }
 
-export default App
+export default App;

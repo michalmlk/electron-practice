@@ -1,7 +1,7 @@
-import {BrowserWindow} from "electron";
-import {cpuCount, cpuUsage, freememPercentage, totalmem} from 'os-utils';
-import os from 'os'
-import {ipcWebContentsSend} from "./utils.ts";
+import { BrowserWindow } from 'electron';
+import { cpuCount, cpuUsage, freememPercentage, totalmem } from 'os-utils';
+import os from 'os';
+import { ipcWebContentsSend } from './utils.ts';
 
 const POOL_INTERVAL = 1000;
 
@@ -13,26 +13,23 @@ export const getCpuUsage = () => {
             reject();
             console.log(e);
         }
-    })
-}
+    });
+};
 
 export const getCurrentResourcesData = (mainWindow: BrowserWindow): void => {
     setInterval(async (): Promise<void> => {
         const cpuUsage = await getCpuUsage();
         const freeOperatingMemory = Math.round((1 - freememPercentage()) * 1000) / 10;
 
-        ipcWebContentsSend("statistics", mainWindow.webContents, {
+        ipcWebContentsSend('statistics', mainWindow.webContents, {
             cpuUsage,
-            freeOperatingMemory
-        })
+            freeOperatingMemory,
+        });
     }, POOL_INTERVAL);
-}
+};
 
 export const getDesktopSpecData = (): DesktopSpecData => ({
     cpuModel: os.cpus()[0].model,
     numberOfCores: cpuCount(),
-    totalMemory: Math.floor(totalmem() / 1024),
-})
-
-
-
+    totalMemory: totalmem(),
+});
