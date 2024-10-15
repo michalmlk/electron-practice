@@ -22,13 +22,13 @@ export interface ChartsState {
 const initialState: ChartsState = {
     charts: {
         cpuUsage: {
-            fill: 'blue',
-            stroke: 'blue',
+            fill: '#32a852',
+            stroke: '#3bdb41',
             fillOpacity: 0.8,
         },
         freeOperatingMemory: {
-            fill: 'yellow',
-            stroke: 'yellow',
+            fill: '#348dd1',
+            stroke: '#4a48c7',
             fillOpacity: 0.8,
         },
     },

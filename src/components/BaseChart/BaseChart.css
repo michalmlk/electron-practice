@@ -1,0 +1,10 @@
+.base-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        text-align: end;
+        margin-top: 0;
+        font-size: 14px;
+    }
+}

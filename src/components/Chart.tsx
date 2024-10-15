@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import BaseChart, { ChartIds } from './BaseChart.tsx';
+import BaseChart, { ChartIds } from './BaseChart/BaseChart.tsx';
 
 type ChartProps = {
     data: number[];

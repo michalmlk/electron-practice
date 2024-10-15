@@ -16,7 +16,7 @@ export const NavigationComponent = () => {
                 setValue(newValue);
             }}
         >
-            <BottomNavigationAction label="Statistics" icon={<BubbleChart />} onClick={() => navigate('/statistics')} />
+            <BottomNavigationAction label="Statistics" icon={<BubbleChart />} onClick={() => navigate('/')} />
             <BottomNavigationAction label="Settings" icon={<Settings />} onClick={() => navigate('/settings')} />
         </BottomNavigation>
     );
