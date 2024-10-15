@@ -1,13 +1,16 @@
 .settings-wrapper {
     display: grid;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 160px 1fr;
     grid-template-columns: 280px 1fr;
     grid-template-areas: "sidebar header"
                          "sidebar main";
+    height: calc(100vh - 56px);
+    overflow: hidden;
 
     .settings-details {
         grid-area: main;
-        padding: 1rem
+        padding: 0 1rem 1rem 1rem;
+        overflow-y: scroll;
     }
 
     .settings-header {
@@ -15,7 +18,9 @@
         align-items: center;
         justify-content: flex-end;
         grid-area: header;
-        padding: 1rem 1rem 0 0;
+        padding: 1rem 1rem 1rem 0;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        z-index: 2;
     }
 
     .settings-navigation {

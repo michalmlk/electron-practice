@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Statistics } from './routes/statistics.tsx';
+import { Statistics } from './routes/statistics/statistics.tsx';
 import { Settings } from './routes/settings/settings.tsx';
 import { AdjustTheme } from './routes/settings/settings-tabs/AdjustTheme';
 import { AdjustHomepage } from './routes/settings/settings-tabs/AdjustHomepage';
+import { AdjustCharts } from './routes/settings/settings-tabs/AdjustCharts';
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
                     {
                         path: '/settings/homepage',
                         element: <AdjustHomepage />,
+                    },
+                    {
+                        path: '/settings/charts',
+                        element: <AdjustCharts />,
                     },
                 ],
             },

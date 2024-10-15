@@ -1,0 +1,7 @@
+.adjust-charts {
+    overflow: hidden;
+
+    .adjust-charts-settings {
+        grid-area: main;
+    }
+}

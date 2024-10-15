@@ -9,6 +9,7 @@ export const NavigationComponent = () => {
     const [value, setValue] = useState(0);
     return (
         <BottomNavigation
+            style={{ gridArea: 'footer' }}
             showLabels
             value={value}
             onChange={(event, newValue) => {

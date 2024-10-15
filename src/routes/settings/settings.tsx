@@ -1,23 +1,8 @@
 import { DeviceData } from '../../components/DeviceData/DeviceData.tsx';
 import './settings.css';
-import { Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Component } from 'react';
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Inbox, Drafts } from '@mui/icons-material';
-
-class ExpandMoreIcon extends Component {
-    render() {
-        return null;
-    }
-}
-
-function InboxIcon() {
-    return null;
-}
-
-function DraftsIcon() {
-    return null;
-}
+import { Inbox, Drafts, BarChart } from '@mui/icons-material';
 
 export const Settings = () => {
     const navigate = useNavigate();
@@ -46,6 +31,14 @@ export const Settings = () => {
                                 <Drafts />
                             </ListItemIcon>
                             <ListItemText primary="Homepage" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding onClick={() => navigate('/settings/charts')}>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <BarChart />
+                            </ListItemIcon>
+                            <ListItemText primary="Charts" />
                         </ListItemButton>
                     </ListItem>
                 </List>
