@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# Electron processes pc monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The PC Resource Monitor is a desktop application built using Electron.js that provides real-time monitoring of your computer’s resources, including CPU usage, RAM consumption, and system information. The application offers a user-friendly interface to help users keep track of their system’s performance at a glance.
 
-Currently, two official plugins are available:
+## Features:
+* Real-time CPU Monitoring: Displays the current CPU usage in a percentage format.
+* RAM Usage Monitoring: Provides real-time information on memory usage, showing how much RAM is currently in use and how much is free.
+* Basic System Information: Shows basic details such as:
+CPU Info: Model, cores, and total ram.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies;
+* Electron.js
+* React
+* Typescript
+* Redux-tooltik
+* Material UI
 
-## Expanding the ESLint configuration
+## Aditional npm packages
+* os-utils
+* recharts
+* systeminformation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# Some screenshots
 
-- Configure the top-level `parserOptions` property like this:
+### Main dashobard
+<img width="800" alt="Zrzut ekranu 2024-10-21 o 21 47 24" src="https://github.com/user-attachments/assets/e0294487-e601-4dc7-a29f-9138fea8afad">
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Settings
+<img width="796" alt="Zrzut ekranu 2024-10-21 o 21 47 54" src="https://github.com/user-attachments/assets/e8c046fa-e007-4ae9-b44a-73403e8764dd">
+<img width="1016" alt="Zrzut ekranu 2024-10-21 o 21 48 28" src="https://github.com/user-attachments/assets/62b669de-6818-41c1-9cd8-9fe40d3427d9">
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Future Enhancements:
+* Add disk usage and network usage
+* (NTH) implement notifications for high CPU and RAM usage
+* Exportable reports
+* Implement drag&drop widgets on home page
