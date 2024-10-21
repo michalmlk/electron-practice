@@ -15,6 +15,7 @@ function App() {
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
+                <header />
                 <div className="app-container">
                     <div className="page-content">
                         <Outlet />

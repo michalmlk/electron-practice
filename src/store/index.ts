@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import chartsReducer from './slices/chartsSlice.ts';
+import homePageReducer from './slices/homePageSlice.ts';
 
 export const store = configureStore({
     reducer: {
         charts: chartsReducer,
+        homePage: homePageReducer,
     },
 });
 

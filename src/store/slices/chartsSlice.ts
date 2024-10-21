@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../index.ts';
-import { ChartIds } from '../../components/BaseChart.tsx';
+import { ChartIds } from '../../components/BaseChart/BaseChart.tsx';
 
 export type ChartConfiguration = {
     fill: string;
     stroke: string;
     fillOpacity: number;
+    dataLabel: string;
 };
 
 export type ChartConfigurationRequest = {
@@ -25,11 +26,13 @@ const initialState: ChartsState = {
             fill: '#32a852',
             stroke: '#3bdb41',
             fillOpacity: 0.8,
+            dataLabel: 'CPU',
         },
         freeOperatingMemory: {
             fill: '#348dd1',
             stroke: '#4a48c7',
             fillOpacity: 0.8,
+            dataLabel: 'RAM free',
         },
     },
 };
@@ -43,5 +46,6 @@ export const chartsSlice = createSlice({
         },
     },
 });
+
 export const chartActions = chartsSlice.actions;
 export default chartsSlice.reducer;

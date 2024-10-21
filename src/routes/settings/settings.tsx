@@ -1,8 +1,8 @@
 import { DeviceData } from '../../components/DeviceData/DeviceData.tsx';
-import './settings.css';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Inbox, Drafts, BarChart } from '@mui/icons-material';
+import { Drafts, BarChart } from '@mui/icons-material';
+import './settings.css';
 
 export const Settings = () => {
     const navigate = useNavigate();
@@ -15,16 +15,18 @@ export const Settings = () => {
                 <Outlet />
             </div>
             <aside className="settings-navigation">
-                <h1>Settings</h1>
+                <div className="heading">
+                    <h2>Settings</h2>
+                </div>
                 <List>
-                    <ListItem disablePadding onClick={() => navigate('/settings/theme')}>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <Inbox />
-                            </ListItemIcon>
-                            <ListItemText primary="Theme" />
-                        </ListItemButton>
-                    </ListItem>
+                    {/*<ListItem disablePadding onClick={() => navigate('/settings/theme')}>*/}
+                    {/*    <ListItemButton>*/}
+                    {/*        <ListItemIcon>*/}
+                    {/*            <Inbox />*/}
+                    {/*        </ListItemIcon>*/}
+                    {/*        <ListItemText primary="Theme" />*/}
+                    {/*    </ListItemButton>*/}
+                    {/*</ListItem>*/}
                     <ListItem disablePadding onClick={() => navigate('/settings/homepage')}>
                         <ListItemButton>
                             <ListItemIcon>

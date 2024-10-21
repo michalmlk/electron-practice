@@ -1,4 +1,4 @@
-import { Area, AreaChart, Tooltip, XAxis, YAxis } from 'recharts';
+import { Area, AreaChart, Tooltip, YAxis } from 'recharts';
 import { useSelector } from 'react-redux';
 import './BaseChart.css';
 
@@ -17,12 +17,13 @@ export default function BaseChart({ data, dataLabel, chartId }: BaseChartProps) 
     return (
         <div className="base-chart-wrapper">
             <AreaChart width={320} height={120} data={data}>
-                <XAxis dataKey="value" />
                 <YAxis domain={[0, 100]} />
                 <Tooltip />
                 <Area type="monotone" dataKey="value" stroke={stroke} fill={fill} fillOpacity={fillOpacity} isAnimationActive={false} />
             </AreaChart>
-            <p>{dataLabel}</p>
+            <p>
+                {dataLabel} {data[data.length - 1]?.value} %
+            </p>
         </div>
     );
 }

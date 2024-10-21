@@ -7,7 +7,7 @@ type ChartProps = {
     chartId: ChartIds;
 };
 
-export const Chart = ({ data, dataLabel, chartId }: ChartProps) => {
+export const Chart = ({ data, chartId, dataLabel }: ChartProps) => {
     const chartData = useMemo(
         () =>
             data.map((data) => ({
@@ -15,5 +15,5 @@ export const Chart = ({ data, dataLabel, chartId }: ChartProps) => {
             })),
         [data]
     );
-    return <BaseChart data={chartData} dataLabel={dataLabel} chartId={chartId} />;
+    return <BaseChart data={chartData} chartId={chartId} dataLabel={dataLabel} />;
 };

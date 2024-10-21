@@ -21,6 +21,7 @@ export const getCurrentResourcesData = (mainWindow: BrowserWindow): void => {
         const cpuUsage = await getCpuUsage();
         const freeOperatingMemory = Math.round((1 - freememPercentage()) * 1000) / 10;
 
+
         ipcWebContentsSend('statistics', mainWindow.webContents, {
             cpuUsage,
             freeOperatingMemory,
