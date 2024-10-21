@@ -2,6 +2,8 @@ import { NavigationComponent } from './components/BottomNavigation.tsx';
 import { Outlet } from 'react-router-dom';
 import './index.css';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const theme = createTheme({
     palette: {
@@ -11,14 +13,17 @@ const theme = createTheme({
 
 function App() {
     return (
-        <ThemeProvider theme={theme}>
-            <div className="app-container">
-                <div className="page-content">
-                    <Outlet />
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <header />
+                <div className="app-container">
+                    <div className="page-content">
+                        <Outlet />
+                    </div>
+                    <NavigationComponent />
                 </div>
-                <NavigationComponent />
-            </div>
-        </ThemeProvider>
+            </ThemeProvider>
+        </Provider>
     );
 }
 

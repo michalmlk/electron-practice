@@ -1,0 +1,8 @@
+.statistics-wrapper {
+    display: grid;
+    padding: 1rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 320px;
+    grid-template-areas: ' widgets charts'
+                         ' widgets charts';
+}

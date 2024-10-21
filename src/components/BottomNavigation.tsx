@@ -9,13 +9,14 @@ export const NavigationComponent = () => {
     const [value, setValue] = useState(0);
     return (
         <BottomNavigation
+            style={{ gridArea: 'footer' }}
             showLabels
             value={value}
             onChange={(event, newValue) => {
                 setValue(newValue);
             }}
         >
-            <BottomNavigationAction label="Statistics" icon={<BubbleChart />} onClick={() => navigate('/statistics')} />
+            <BottomNavigationAction label="Statistics" icon={<BubbleChart />} onClick={() => navigate('/')} />
             <BottomNavigationAction label="Settings" icon={<Settings />} onClick={() => navigate('/settings')} />
         </BottomNavigation>
     );

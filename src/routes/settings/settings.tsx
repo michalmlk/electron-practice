@@ -1,23 +1,8 @@
 import { DeviceData } from '../../components/DeviceData/DeviceData.tsx';
-import './settings.css';
-import { Accordion, AccordionDetails, AccordionSummary, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Component } from 'react';
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Inbox, Drafts } from '@mui/icons-material';
-
-class ExpandMoreIcon extends Component {
-    render() {
-        return null;
-    }
-}
-
-function InboxIcon() {
-    return null;
-}
-
-function DraftsIcon() {
-    return null;
-}
+import { Drafts, BarChart } from '@mui/icons-material';
+import './settings.css';
 
 export const Settings = () => {
     const navigate = useNavigate();
@@ -30,22 +15,32 @@ export const Settings = () => {
                 <Outlet />
             </div>
             <aside className="settings-navigation">
-                <h1>Settings</h1>
+                <div className="heading">
+                    <h2>Settings</h2>
+                </div>
                 <List>
-                    <ListItem disablePadding onClick={() => navigate('/settings/theme')}>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <Inbox />
-                            </ListItemIcon>
-                            <ListItemText primary="Theme" />
-                        </ListItemButton>
-                    </ListItem>
+                    {/*<ListItem disablePadding onClick={() => navigate('/settings/theme')}>*/}
+                    {/*    <ListItemButton>*/}
+                    {/*        <ListItemIcon>*/}
+                    {/*            <Inbox />*/}
+                    {/*        </ListItemIcon>*/}
+                    {/*        <ListItemText primary="Theme" />*/}
+                    {/*    </ListItemButton>*/}
+                    {/*</ListItem>*/}
                     <ListItem disablePadding onClick={() => navigate('/settings/homepage')}>
                         <ListItemButton>
                             <ListItemIcon>
                                 <Drafts />
                             </ListItemIcon>
                             <ListItemText primary="Homepage" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding onClick={() => navigate('/settings/charts')}>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <BarChart />
+                            </ListItemIcon>
+                            <ListItemText primary="Charts" />
                         </ListItemButton>
                     </ListItem>
                 </List>
